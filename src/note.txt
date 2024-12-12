@@ -1,0 +1,43 @@
+unction App() {
+  // State to store the current color
+  const [bgColor, setBgColor] = useState("white");
+
+  // Function to generate a random color
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
+  // Change the background color on button click
+  const changeColor = () => {
+    const newColor = getRandomColor();
+    setBgColor(newColor);
+  };
+
+  return (
+    <div style={{ backgroundColor: bgColor, height: "100vh", textAlign: "center", transition: "0.5s" }}>
+      <h1 style={{ paddingTop: "20vh", color: "#333" }}>Color Changer</h1>
+      <button
+        onClick={changeColor}
+        style={{
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+          border: "none",
+          borderRadius: "5px",
+          backgroundColor: "#333",
+          color: "white",
+          marginTop: "20px"
+        }}
+      >
+        Change Background Color
+      </button>
+    </div>
+  );
+}
+
+export default App;
